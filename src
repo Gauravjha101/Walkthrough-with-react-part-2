@@ -1,0 +1,156 @@
+import React from 'react'; 
+  
+ function Login({ toggleSignUp }) { 
+     return ( 
+         <div className="login"> 
+              <img src="https://cdn.pixabay.com/photo/2016/08/15/01/29/instagram-1594387_1280.png" alt="logo" /> 
+             <div className="input-boxes"> 
+                 <input type="text" placeholder="Email Address" /> 
+                 <input type="password" placeholder="Password" /> 
+                 <button>Login</button> 
+                 <div className='info'> 
+                     Don't have an account{' '} 
+                     <span> 
+                         <a href="#" onClick={toggleSignUp}> 
+                             Sign Up 
+                         </a> 
+                     </span> 
+                 </div> 
+             </div> 
+         </div> 
+     ); 
+ } 
+  
+ export default Login;
+
+ import React, { useState } from 'react'; 
+ import Login from '../Login/Login'; // Import the Login component 
+  
+ function SignUp() { 
+     const [isSignedUp, setIsSignedUp] = useState(true); 
+  
+     const toggleSignUp = () => { 
+         setIsSignedUp(!isSignedUp); 
+     }; 
+  
+     return ( 
+         <div className='signup-container'> 
+             <div className="signup"> 
+                 {isSignedUp ? ( 
+                     <> 
+                         <img src="https://cdn.pixabay.com/photo/2016/08/15/01/29/instagram-1594387_1280.png" alt="logo" /> 
+                         <div className="input-boxes"> 
+                             <input type="text" placeholder='Mobile Number or Email Address' /> 
+                             <input type="text" placeholder='Full Name' /> 
+                             <input type="text" placeholder='Phone Number, username or email' /> 
+                             <input type="text" placeholder='Password' /> 
+                             <button>Sign Up</button> 
+                             <div className='info'> 
+                                 Have an account{' '} 
+                                 <span> 
+                                     <a href="#" onClick={toggleSignUp}> 
+                                         Log In 
+                                     </a> 
+                                 </span> 
+                             </div> 
+                         </div> 
+                     </> 
+                 ) : ( 
+                     <Login toggleSignUp={toggleSignUp} /> 
+                 )} 
+             </div> 
+         </div> 
+     ); 
+ } 
+  
+ export default SignUp;
+
+ * { 
+   margin: 0; 
+   padding: 0; 
+   outline: none; 
+   overflow: hidden; 
+ } 
+  
+ body { 
+   background-color: #fff; 
+   display: flex; 
+   align-items: center; 
+   justify-content: center; 
+   height: 100vh; 
+ } 
+  
+ button { 
+   background-color: #1c6bff; 
+   color: white; 
+   border-radius: 8px; 
+   border: none; 
+   padding: 15px 10px; 
+   margin: 12px 0; 
+   font-size: 20px; 
+ } 
+  
+ .info { 
+   text-align: center; 
+   margin-top: 30px; 
+   font-size: 18px; 
+ } 
+  
+ .info a { 
+   text-decoration: none; 
+   margin-left: 5px; 
+ } 
+  
+ .info a:hover { 
+   text-decoration: underline; 
+ } 
+  
+ .signup-container { 
+   border: 3px solid silver; 
+   border-radius: 14px; 
+   padding: 30px 22px; 
+   width: 430px; 
+ } 
+  
+ img { 
+   height: 150px; 
+   width: 90%; 
+   margin-top: 30px; 
+ } 
+  
+ .input-boxes { 
+   display: flex; 
+   flex-direction: column; 
+   margin: 10px 0; 
+ } 
+  
+ input { 
+   padding: 18px 10px; 
+   margin: 4px 0; 
+   font-size: 21px; 
+   border: 2px solid silver; 
+ }
+
+ import React from 'react'; 
+ import './App.css'; 
+ import SignUp from './Components/SignUp/SignUp'; 
+  
+ function App() { 
+     return ( 
+         <div> 
+             <SignUp /> 
+         </div> 
+     ); 
+ } 
+  
+ export default App;
+
+ import React from 'react' 
+ import ReactDOM from 'react-dom/client' 
+ import App from './App.jsx' 
+  
+ ReactDOM.createRoot(document.getElementById('root')).render( 
+   <React.StrictMode> 
+     <App /> 
+   </React.StrictMode>, 
+ )
