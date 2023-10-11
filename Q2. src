@@ -1,0 +1,87 @@
+.counterBox { 
+     background-color: #ef4141; 
+     color: white; 
+     height: 400px; 
+     width: 450px; 
+     border-radius: 16px; 
+     display: flex; 
+     flex-direction: column; 
+     justify-content: center; 
+     align-items: center; 
+ } 
+  
+ .counterBox p { 
+     font-size: 3.5rem 
+ } 
+  
+ button { 
+     background-color: #cfc7c7; 
+     border-radius: 12px; 
+     border: none; 
+     padding: 14px 20px; 
+     margin-right: 16px; 
+     font-size: 1.3rem; 
+ }
+
+import React, { useState } from 'react'; 
+ import './Counter.css' 
+  
+ function Counter() { 
+   let [count, setCount] = useState(0); 
+  
+   function increment() { 
+     setCount(count++); 
+   } 
+  
+   function decrement() { 
+     setCount(count--); 
+   } 
+  
+   return ( 
+     <div className='container'> 
+       <div className="counterBox"> 
+         <p>{count}</p> 
+         <div className="buttons"> 
+           <button onClick={increment}>Increment</button> 
+           <button onClick={decrement}>Decrement</button> 
+         </div> 
+       </div> 
+     </div> 
+   ); 
+ } 
+  
+ export default Counter;
+
+body { 
+     background-color: black; 
+     display: flex; 
+     align-items: center; 
+     justify-content: center; 
+     height: 100vh; 
+     overflow: hidden; 
+ }
+
+import React from 'react' 
+  
+ import './App.css' 
+ import Counter from './Counter/Counter' 
+  
+ function App() { 
+   return ( 
+     <div> 
+       <Counter/> 
+     </div> 
+   ) 
+ } 
+  
+ export default App;
+
+import React from 'react' 
+ import ReactDOM from 'react-dom/client' 
+ import App from './App.jsx' 
+  
+ ReactDOM.createRoot(document.getElementById('root')).render( 
+   <React.StrictMode> 
+     <App /> 
+   </React.StrictMode>, 
+ )
